@@ -1,0 +1,11 @@
+<!-- rails knows we are dealing with a partial with _form title -->
+<!-- cut this below from new.html.erb into here and changed with (@brew) -->
+
+<%= form_for @agent, html: { class: "form" } do |f| %>
+	<!-- # want to see in the browser with symbol %>-->
+	First Name: <%= f.text_field :first_name %><br />
+	Last Name: <%= f.text_field :last_name %><br />
+	Email: <%= f.text_field :email %><br />
+	<!-- f.select :meat [['chicken', 'chicken'], ['steak, 'steak']] -->
+	<%= f.submit%>
+<% end %>	

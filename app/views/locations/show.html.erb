@@ -1,0 +1,12 @@
+<h1>Locations#show</h1>
+<p>Find me in app/views/locations/show.html.erb</p>
+<%= @location.first_name %> 
+<%= @location.last_name %> 
+<%= @location.email %> 
+<%= link_to 'location', edit_location_path %>
+
+<%= link_to 'Delete this location', @location, method: :delete, data: {
+	confirm: "Are you sure you want to delete?"} %>
+
+
+<%= link_to 'Back to list', location_path %>

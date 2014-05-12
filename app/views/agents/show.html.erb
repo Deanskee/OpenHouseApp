@@ -1,0 +1,12 @@
+<h1>Agents#show</h1>
+<p>Find me in app/views/agents/show.html.erb</p>
+<%= @agent.first_name %> 
+<%= @agent.last_name %> 
+<%= @agent.email %> 
+<%= link_to 'Agent', edit_agent_path %>
+
+<%= link_to 'Delete this Agent', @agent, method: :delete, data: {
+	confirm: "Are you sure you want to delete?"} %>
+
+
+<%= link_to 'Back to list', agent_path %>
