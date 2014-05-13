@@ -5,14 +5,18 @@ class LocationsController < ApplicationController
 
   def show
     @location= Location.find(params[:id])
+    @agent_id = Agent.find_by(token: params[:token])
   end
 
   def new
     @location= Location.new
+    @agent_id = Agent.find_by(token: params[:token])
   end
+    
 
   def create
      @location = Location.new(params.require(:location).permit(:address, :zip_code, :owner))
+     
     if @location.save
         redirect_to locations_path, notice: "Location was successfully created."
     else 

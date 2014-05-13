@@ -3,10 +3,10 @@
 <%= @agent.first_name %> 
 <%= @agent.last_name %> 
 <%= @agent.email %> 
-<%= link_to 'Agent', edit_agent_path %>
-
+<%= link_to 'Edit Agent', edit_agent_path %>
+<%= link_to 'Add Open House', new_location_path(token: @agent.token) %>
 <%= link_to 'Delete this Agent', @agent, method: :delete, data: {
 	confirm: "Are you sure you want to delete?"} %>
 
 
-<%= link_to 'Back to list', agent_path %>
+<%= link_to 'Back to list', agents_path %>

@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/danieljacobarcher/mongoid_token.git
+  revision: f60a5b259858f6fff73a820a09ceac61e93a1e05
+  specs:
+    mongoid_token (2.0.2)
+      mongoid
+
+GIT
   remote: git://github.com/mongoid/mongoid.git
   revision: e93a4837b0266db46c24aae172e184f57c847b04
   specs:
@@ -36,6 +43,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     arel (4.0.2)
+    bcrypt (3.1.7)
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
     bson (2.2.3)
@@ -137,12 +145,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootstrap-sass (~> 3.1.1)
   coffee-rails (~> 4.0.0)
   genghis (~> 1.4.1)
   jbuilder (~> 1.2)
   jquery-rails
   mongoid!
+  mongoid_token!
   pry
   rails (= 4.0.4)
   sass-rails (~> 4.0.2)

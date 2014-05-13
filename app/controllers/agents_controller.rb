@@ -4,11 +4,12 @@ class AgentsController < ApplicationController
   end
 
   def show
-    @agent = Agent.find(params[:id])
+    @agent = Agent.find_by(token: params[:id])
+    
   end
 
   def new
-    @agent = Agent.new
+    @agent = Agent.find_by(token: params[:id])
     @visitor = Visitor.new
   end
 
@@ -22,11 +23,11 @@ class AgentsController < ApplicationController
 end
 
   def edit
-    @agent = Agent.find(params[:id])
+    @agent = Agent.find_by(token: params[:id])
   end
 
   def update
-    @agent = Agent.find(params[:id])
+    @agent = Agent.find_by(token: params[:id])
     if @agent.update(agent_params)
       redirect_to agents_path, notice: "Agent was successfully updated"
     else
@@ -35,11 +36,11 @@ end
 end
 
   def destroy
-    @agent = Agent.find(params[:id])
+    @agent = Agent.find_by(token: params[:id])
     @agent.destroy
     redirect_to agents_path
   end
-end
+
 
 private
 
@@ -47,3 +48,4 @@ private
       params.require(:agent).permit(:first_name, :last_name, :email)
   end
 
+end
