@@ -9,7 +9,7 @@ class AgentsController < ApplicationController
   end
 
   def new
-    @agent = Agent.find_by(token: params[:id])
+    @agent = Agent.new
     @visitor = Visitor.new
   end
 

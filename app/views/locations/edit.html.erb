@@ -1,4 +1,11 @@
 <h1>Locations#edit</h1>
 <p>Find me in app/views/locations/edit.html.erb</p>
-<%= render 'form' %>
+<%= form_for(@location, url: location_path(id: @location.id, token: params[:token])) do |f| %>
+	
+	Address: <%= f.text_field :address %><br />
+	Zip Code: <%= f.text_field :zip_code %><br />
+	Owner Name: <%= f.text_field :owner %><br />
+	
+	<%= f.submit() %>
+<% end %>	
 <%= link_to "Go back", agent_path %>

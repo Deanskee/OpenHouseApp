@@ -7,11 +7,41 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="container">
-<ol class="breadcrumb">
-  <li><a href="#">Home</a></li>
-  <li><a href="#">Library</a></li>
-  <li class="active">Data</li>
-</ol>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://localhost:3000/agents">Open House-Home</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "View Agents", agents_path %></li>
+        <li><%= link_to "New Agents", new_agent_path %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if session[:remember_token] %>
+          <li><%= "Dean " + current_user.name %></li>
+          <li><%= link_to "Log Out", sessions_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Sign Up", new_agent_path %></li>
+          <li><%= link_to "Sign In", new_sessions_path %></li>  
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="container-fluid">
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>
 <%= yield %>
 
 </body>

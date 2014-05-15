@@ -6,12 +6,15 @@ class User
   field :last_name, type: String
   field :email, type: String
   field :password_digest, type: String
-  token :remember_token => :alphanumeric, :length => 16
+  token :token => :alphanumeric, :length => 16
 
   def full_name
-    self.first_name + " " + self.last_name
+    if self.first_name && self.last_name 
+      self.first_name + " " + self.last_name 
+    else
+    "unknown"
+    end
   end
-
 
   def password
     @password

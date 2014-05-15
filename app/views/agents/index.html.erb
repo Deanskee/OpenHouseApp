@@ -6,7 +6,7 @@
 	<ul class="list-group panel panel-success">
 	  <li class="list-group-item panel-heading">
 	   <div class="panel-title">	
-	 	Name: <%= link_to agent.full_name, agent %>
+	 	 Name: <%= link_to agent.full_name, agent_path(agent) %> 
 	   </div>
 	  </li>
 	<li class="list-group-item"> First Name: <%= agent.first_name %> </li>
@@ -14,9 +14,9 @@
 		<li class="list-group-item"> Email: <%= agent.email %> </li>
 	</li>
 	</ul>
-	<%= link_to 'Edit',
+	<%# link_to 'Edit',
 		edit_agent_path(agent) %>
-	<%= link_to 'Delete', agent, method: :delete, data: { confirm: 'Are you sure?' } %>
+	<%# link_to 'Delete', agent, method: :delete, data: { confirm: 'Are you sure?' } %>
 
 <br />
 

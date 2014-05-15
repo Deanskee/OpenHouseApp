@@ -1,6 +1,14 @@
 <h1>Locations#new</h1>
 <p>Find me in app/views/locations/new.html.erb</p>
 <h1>"Add a new Location"</h1>
-<%= render 'form' %>
+
+<%= form_for(@location, url: locations_path( token: params[:token])) do |f| %>
+	
+	Address: <%= f.text_field :address %><br />
+	Zip Code: <%= f.text_field :zip_code %><br />
+	Owner Name: <%= f.text_field :owner %><br />
+	
+	<%= f.submit() %>
+<% end %>	
 <%= link_to "Go back to the all Location list", locations_path %>
 <%= link_to "Back to my Agent profile", @agent_id %>

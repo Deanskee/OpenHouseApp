@@ -9,19 +9,22 @@ class LocationsController < ApplicationController
   end
 
   def new
+    
     @location= Location.new
     @agent_id = Agent.find_by(token: params[:token])
   end
     
 
   def create
+    # raise params.inspect
      @location = Location.new(params.require(:location).permit(:address, :zip_code, :owner))
-     
+     @agent_id = Agent.find_by(token: params[:token])
+     @location.agent = @agent_id
     if @location.save
         redirect_to locations_path, notice: "Location was successfully created."
     else 
         render action:'new'
-  end
+    end
   end
 
   def edit
@@ -34,13 +37,16 @@ class LocationsController < ApplicationController
       redirect_to locations_path, notice: "Location was successfully updated"
     else
       render action: 'edit'  
-  end
+    end
   end
 
   def destroy
     @location = Location.find(params[:id])
     @location.destroy
     redirect_to locations_path
-  end
+    end
   end
 
+def location_params
+    params.require(:location).permit(:address, :zip_code, :owner)
+end

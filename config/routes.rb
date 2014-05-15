@@ -1,4 +1,7 @@
 OpenHouseApp::Application.routes.draw do
+  get "sessions/new"
+  get "sessions/create"
+  get "sessions/destroy"
   resource :sessions, only: [:new, :create, :destroy] 
   # get "users/index"
   # get "users/show"
