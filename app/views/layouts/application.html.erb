@@ -27,11 +27,11 @@
         <li><%= link_to "New Agents", new_agent_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <% if session[:remember_token] %>
-          <li><%= "Dean " + current_user.name %></li>
+        <% if session[:token] %>
+          <!-- <li><%#current_user.first_name %></li> -->
           <li><%= link_to "Log Out", sessions_path, method: :delete %></li>
         <% else %>
-          <li><%= link_to "Sign Up", new_agent_path %></li>
+          <li><%= link_to "Sign Up", new_user_path %></li>
           <li><%= link_to "Sign In", new_sessions_path %></li>  
         <% end %>
       </ul>

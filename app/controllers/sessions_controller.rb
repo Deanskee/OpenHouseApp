@@ -1,14 +1,15 @@
 class SessionsController < ApplicationController
   def new
+  	@users = User.new
   end
 
   def create
   	@user = User.where(:email => params[:session][:email]).first
   	if @user && @user.authenticate(params[:session][:password])
-  		flash[:success] = "HELLO " + @user.name + " You have logged in"
-  		session[:remember_token] = @user.id
+  		flash[:success] = "HELLO " + @user.full_name + " You have logged in"
+  		session[:token] = @user.id
   		@current_user = @user
-  		redirect_to root_path
+  		redirect_to users_path
   	  else
   		flash[:error] = "Invalid email/password combination"
   		render 'new'
@@ -16,8 +17,8 @@ class SessionsController < ApplicationController
   	end
 
   def destroy
-  	session.delete(:remember_token)
-  	redirect_to burritos_path
+  	session.delete(:token)
+  	redirect_to root_path
   end
-  
+
 end

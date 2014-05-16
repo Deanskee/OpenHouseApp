@@ -1,12 +1,33 @@
 <h1>Agents#show</h1>
 <p>Find me in app/views/agents/show.html.erb</p>
-<%= @agent.first_name %> 
-<%= @agent.last_name %> 
-<%= @agent.email %> 
+
+<strong> Name: <%= @agent.full_name %></strong> 
+</br>
+<strong> Email: <%= @agent.email %> </strong> 
+</br>
 <%= link_to 'Edit Agent', edit_agent_path %>
+</br>
 <%= link_to 'Add Open House', new_location_path(token: @agent.token) %>
+</br>
 <%= link_to 'Delete this Agent', @agent, method: :delete, data: {
 	confirm: "Are you sure you want to delete?"} %>
-
-
+ </br>
 <%= link_to 'Back to list', agents_path %>
+
+<% @agent.locations.each do |location| %>
+</br>
+</br>
+ <span class="glyphicon glyphicon-star">
+<h4><%= location.address %> </h4>
+
+</span>
+</br
+
+<h5><%= location.zip_code %> </h5>
+<h5><%= location.owner %> </h5>
+
+
+<% end %>
+
+
+

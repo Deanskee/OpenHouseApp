@@ -1,14 +1,14 @@
 class UsersController < ApplicationController
-  def index
+  # def index
 
-  end
+  # end
 
-  def show
+  # def show
 
-    # User.find_by
-    # Agent.find_by
-    # Manager.find_by
-  end
+  #   # User.find_by
+  #   # Agent.find_by
+  #   # Manager.find_by
+  # end
 
   def new
    @user = User.new
@@ -18,18 +18,17 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "You have signed up successfully"
-      redirect_to :root
+      session[:token] = @user.id
+      @current_user = @user
+      redirect_to users_path
     else
-      render :new
+      render 'new'
     end
   end
 
-  def edit
-  end
+protected
 
-  def destroy
-  end
-
-  def update
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :password)
   end
 end
