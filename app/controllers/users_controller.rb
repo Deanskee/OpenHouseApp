@@ -3,12 +3,12 @@ class UsersController < ApplicationController
 
   # end
 
-  # def show
-
-  #   # User.find_by
-  #   # Agent.find_by
-  #   # Manager.find_by
-  # end
+  def show
+    @user = User.find_by(token: params[:id])
+    # User.find_by
+    # Agent.find_by
+    # Manager.find_by
+  end
 
   def new
    @user = User.new
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       flash[:success] = "You have signed up successfully"
       session[:token] = @user.id
       @current_user = @user
-      redirect_to users_path
+      redirect_to user_path(@user)
     else
       render 'new'
     end

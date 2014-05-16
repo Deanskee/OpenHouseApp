@@ -1,4 +1,6 @@
 class AgentsController < ApplicationController
+  before_action :authenticate_user
+  # before_action 
   def index
     @agents = Agent.all
   end

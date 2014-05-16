@@ -8,6 +8,8 @@ class User
   field :password_digest, type: String
   token :token => :alphanumeric, :length => 16
 
+  # validates :email, :first_name, :last_name, uniqueness: :true, presence :true
+
   def full_name
     if self.first_name && self.last_name 
       self.first_name + " " + self.last_name 
