@@ -13,14 +13,17 @@ class User
      end
    end
 
-  has_mongoid_attached_file :picture
-  
+  has_mongoid_attached_file :picture,
+   :styles => {
+      :thumb => "100x100#",   # Centrally cropped
+      :small  => "150x150>"}  # Only squish if it's larger than this
+
   field :first_name, type: String
   field :last_name, type: String
   field :email, type: String
   field :password_digest, type: String
   token :token => :alphanumeric, :length => 16
-  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+  validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
   # validates :email, :first_name, :last_name, uniqueness: :true, presence :true
 
   def full_name

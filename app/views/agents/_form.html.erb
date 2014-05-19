@@ -1,8 +1,12 @@
 <!-- rails knows we are dealing with a partial with _form title -->
 <!-- cut this below from new.html.erb into here and changed with (@brew) -->
+<div class="container">
+	<%= form_for [@user, @agent], html: { class: "form" } do |f| %>
+	<div class="col-md-5">
+		<%= f.file_field :picture %>
+	</div>
 
-<%= form_for @agent, html: { class: "form" } do |f| %>
-	<!-- # want to see in the browser with symbol %>-->
+
 	First Name: <%= f.text_field :first_name %><br />
 	Last Name: <%= f.text_field :last_name %><br />
 	Email: <%= f.text_field :email %><br />

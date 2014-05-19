@@ -15,7 +15,7 @@
 	confirm: "Are you sure you want to delete?"} %>
  </br>
 <%= link_to 'Back to list', agents_path %>
-
+<%= image_tag @agent.picture.url %>
 <% @agent.locations.each do |location| %>
 </br>
 </br>
@@ -27,6 +27,7 @@ Address of Open House: <h4><%= location.address %> </h4>
 
 <h5><%= location.zip_code %> </h5>
 <h5><%= location.owner %> </h5>
+<%# image_tag @location.picture.url %>
 
 
 <% end %>
