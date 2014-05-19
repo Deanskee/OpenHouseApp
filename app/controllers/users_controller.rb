@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "You have signed up successfully"
-      session[:token] = @user.id
+      cookies[:token] = @user.token
       @current_user = @user
       redirect_to user_path(@user)
     else
@@ -29,6 +29,7 @@ class UsersController < ApplicationController
 protected
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :picture)
   end
 end
+

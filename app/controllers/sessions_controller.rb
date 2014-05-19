@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
   	if @user && @user.authenticate(params[:session][:password])
   		# params session password is what the user puts into password. passing into authenticate
   		flash[:success] = "HELLO " + @user.full_name + " You have logged in"
-  		session[:token] = @user.id
+  		cookies[:token] = @user.token
   		@current_user = @user
   		redirect_to user_path(@user)
   	  else
@@ -27,7 +27,8 @@ class SessionsController < ApplicationController
   	end
 
   def destroy
-  	session.delete(:token)
+    reset_session
+  	cookies.delete(:token)
   	redirect_to root_path
   end
 

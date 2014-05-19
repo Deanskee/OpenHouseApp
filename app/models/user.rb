@@ -2,12 +2,25 @@ require "bcrypt"
 class User
   include Mongoid::Document
   include Mongoid::Token
+  include Mongoid::Paperclip
+  # Include this after_commit so that paperclip doesn't freak out
+   def self.after_commit(*args, &block)
+     args.each do |arg|
+     case arg[:on]
+       when :destroy
+         after_destroy &block
+       end
+     end
+   end
+
+  has_mongoid_attached_file :picture
+  
   field :first_name, type: String
   field :last_name, type: String
   field :email, type: String
   field :password_digest, type: String
   token :token => :alphanumeric, :length => 16
-
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   # validates :email, :first_name, :last_name, uniqueness: :true, presence :true
 
   def full_name

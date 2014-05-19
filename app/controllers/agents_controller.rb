@@ -1,13 +1,11 @@
 class AgentsController < ApplicationController
-  before_action :authenticate_user
-  # before_action 
+  # before_filter :authorize, except: [:new, :create]
   def index
     @agents = Agent.all
   end
 
   def show
     @agent = Agent.find_by(token: params[:id])
-    
   end
 
   def new
