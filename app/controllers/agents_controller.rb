@@ -11,10 +11,13 @@ class AgentsController < ApplicationController
   def new
     @agent = Agent.new
     @visitor = Visitor.new
+  
   end
 
   def create
     @agent = Agent.new(params.require(:agent).permit(:first_name, :last_name, :email, :picture))
+    @user_id = User.find_by(id: current_user.id)
+    @agent.user_id = @user_id.id
     if @agent.save
         redirect_to agents_path, notice: "Agent was successfully created."
     else 

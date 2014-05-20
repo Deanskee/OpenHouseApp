@@ -3,6 +3,7 @@ class User
   include Mongoid::Document
   include Mongoid::Token
   include Mongoid::Paperclip
+  has_many :agents
   # Include this after_commit so that paperclip doesn't freak out
    def self.after_commit(*args, &block)
      args.each do |arg|

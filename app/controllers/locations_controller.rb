@@ -11,7 +11,7 @@ class LocationsController < ApplicationController
   def new
     
     @location= Location.new
-    @agent_id = Agent.find_by(token: params[:token])
+    
   end
     
 
