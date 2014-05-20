@@ -25,11 +25,12 @@
       <ul class="nav navbar-nav">
         <li><%= link_to "View Agents", agents_path %></li>
         <% if current_user%>
-      <li><%= link_to "New Agents", new_agent_path %></li>
-        
+          <li><%= link_to "New Agents", new_agent_path %></li>
+       <% end %>
       </ul>
+
       <ul class="nav navbar-nav navbar-right">
-        
+       <% if current_user%>      
           <li><%#current_user.first_name %></li> 
           <li><%= link_to "Log Out", sessions_path, method: :delete %></li>
 

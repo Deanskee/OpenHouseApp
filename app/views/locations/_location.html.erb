@@ -1,0 +1,10 @@
+<!-- <span class="glyphicon glyphicon-star"> -->
+Address of Open House: 
+<h4><%= link_to location.address, location %> </h4>
+<h5><%= location.zip_code %> </h5>
+<h5>Owner: <%= location.owner %> </h5>
+
+<%= link_to 'Edit', edit_location_path(location) %>
+<%= link_to 'Delete', location, method: :delete, data: { confirm: 'Are you sure?' } %>
+<br/>
+<br/>

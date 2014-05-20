@@ -1,19 +1,7 @@
 <h1>Locations#index</h1>
 <p>Find me in app/views/locations/index.html.erb</p>
-<ul>
-<% @locations.each do |l| %>
-	
-		<li> <%= l.address %> </li>
-		<li> <%= l.zip_code %> </li>
-		<li> <%= l.owner %> </li>
-	<%= link_to 'Edit',
-		edit_location_path(l) %>
-	<%= link_to 'Delete', l, method: :delete, data: { confirm: 'Are you sure?' } %>
 
-
-<br />
-
-<% end %>
-</ul>
 
 <%= link_to 'New Location', new_location_path, class: "button" %>
+<br><br/>
+<%= render @locations %>
