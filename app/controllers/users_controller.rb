@@ -19,7 +19,6 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "You have signed up successfully"
       cookies[:token] = @user.token
-      @current_user = @user
       redirect_to user_path(@user)
     else
       render 'new'

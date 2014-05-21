@@ -3,10 +3,11 @@
 <h1> All Agents </h1>
 <div class="jumbotron">
 <!-- <div class="row" -->
+
 <% @agents.each do |agent| %>
 	<ul class="list-group panel panel-success">
 	  <li class="list-group-item panel-heading">
-	   <div class="panel-title">	
+	   <div class="panel-title">
 	 	 Name: <%= link_to agent.full_name, agent_path(agent) %> 
 	   </div>
 	  </li>

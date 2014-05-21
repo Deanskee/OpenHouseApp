@@ -1,5 +1,6 @@
 class AgentsController < ApplicationController
   # before_filter :authorize, except: [:new, :create]
+  # before_action :authenticate_user
   def index
     @agents = Agent.all
   end

@@ -18,7 +18,6 @@ class SessionsController < ApplicationController
   		# params session password is what the user puts into password. passing into authenticate
   		flash[:success] = "HELLO " + @user.full_name + " You have logged in"
   		cookies[:token] = @user.token
-  		@current_user = @user
   		redirect_to user_path(@user)
   	  else
   		flash[:error] = "Invalid email/password combination"
