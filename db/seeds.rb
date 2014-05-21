@@ -6,9 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Agent.destroy_all
-Visitor.destroy_all
-Location.destroy_all
 
 # wipes database before adding new people. so no duplication
 
