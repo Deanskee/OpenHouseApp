@@ -2,7 +2,7 @@ class AgentsController < ApplicationController
   # before_filter :authorize, except: [:new, :create]
   # before_action :authenticate_user
   def index
-    @agents = Agent.all
+    @agents = current_user.agents
   end
 
   def show
@@ -20,7 +20,7 @@ class AgentsController < ApplicationController
     @user_id = User.find_by(id: current_user.id)
     @agent.user_id = @user_id.id
     if @agent.save
-        redirect_to agents_path, notice: "Agent was successfully created."
+        redirect_to agent_path(@agent), notice: "Agent was successfully created."
     else 
       raise(params.inspect)
         render action:'new'

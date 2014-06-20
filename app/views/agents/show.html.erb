@@ -1,19 +1,21 @@
 <!-- <h1>Agents#show</h1>
 <p>Find me in app/views/agents/show.html.erb</p> -->
-<h1> Agent Profile </h1>
-<strong> Name: <%= @agent.full_name %></strong> 
-<br/><strong> Email: <%= @agent.email %> </strong> 
-<br/><% if current_user == @agent %>
-<%= link_to 'Edit Agent', edit_agent_path %>
-<%end%>
+
+	<h1> Agent Profile </h1>
+<strong> 	Name: <%= @agent.full_name %></strong> 
+<br/><strong> Email: <%= @agent.email %> </strong>
+
+<br/> <% if current_user == @agent %>
+	<%= link_to 'Edit Agent', edit_agent_path %>
+	<%end%>
 <br/><%= link_to 'Add Open House', new_location_path(token: @agent.token) %>
 <br/><%= link_to 'Delete this Agent', @agent, method: :delete, data: {
-	confirm: "Are you sure you want to delete?"} %>
- <br/>
-<%= link_to 'Back to list', agents_path %>
-<%= image_tag @agent.picture.url %>
+		confirm: "Are you sure you want to delete?"} %>
 <br/>
-<%= render @agent.locations %>
+	<%= link_to 'Back to list', agents_path %>
+	<%= image_tag @agent.picture.url %>
+<br/>
+	<%= render @agent.locations %>
 
 
 

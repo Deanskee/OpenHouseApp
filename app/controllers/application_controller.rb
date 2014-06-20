@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
  private
  	def current_user
  		current_user ||= User.find_by(token: cookies[:token]) if cookies[:token].present?
- 	end
-
+ 	end 
+ 	# sets the user to equal a token
  	def signed_in?
  		!!current_user
  	end

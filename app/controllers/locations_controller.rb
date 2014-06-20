@@ -29,10 +29,12 @@ class LocationsController < ApplicationController
 
   def edit
     @location= Location.find(params[:id])
+    check_user(@location)
   end
 
   def update
     @location = Location.find(params[:id])
+      check_user(@location)
     if @location.update(location_params)
       redirect_to locations_path, notice: "Location was successfully updated"
     else
@@ -47,6 +49,14 @@ class LocationsController < ApplicationController
     end
   end
 
+private
+
 def location_params
     params.require(:location).permit(:address, :zip_code, :owner)
+end
+
+def check_user(location)
+   if current_user != location.agent.user
+      redirect_to agents_path
+    end
 end

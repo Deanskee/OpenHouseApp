@@ -2,27 +2,26 @@
 <p>Find me in app/views/agents/index.html.erb</p> -->
 <h1> All Agents </h1>
 <div class="jumbotron">
-<!-- <div class="row" -->
+
+<%# if current_user == @user %>
 
 <% @agents.each do |agent| %>
-	<ul class="list-group panel panel-success">
-	  <li class="list-group-item panel-heading">
-	   <div class="panel-title">
-	 	 Name: <%= link_to agent.full_name, agent_path(agent) %> 
-	   </div>
-	  </li>
-	<li class="list-group-item"> First Name: <%= agent.first_name %> </li>
-	<li class="list-group-item"> Last Name: <%= agent.last_name %> </li>
+	  <ul class="list-group panel panel-success">
+	    <li class="list-group-item panel-heading">
+			<div class="panel-title">
+				Name: <%= link_to agent.full_name, agent_path(agent) %> 
+			</div>
+		</li>
+		<li class="list-group-item"> First Name: <%= agent.first_name %> </li>
+		<li class="list-group-item"> Last Name: <%= agent.last_name %> </li>
 		<li class="list-group-item"> Email: <%= agent.email %> </li>
-	</li>
-	</ul>
+	   </li>
+	  </ul>
+<% end %>
 	<%# link_to 'Edit',
 		edit_agent_path(agent) %>
 	<%# link_to 'Delete', agent, method: :delete, data: { confirm: 'Are you sure?' } %>
-
-<br />
-
-<% end %>
+<%# end %>
 
 
 <%= link_to 'New Agent', new_agent_path, class: "button" %>
