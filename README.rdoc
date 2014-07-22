@@ -1,5 +1,7 @@
-== README
+== OpenHouseApp
 
 First attempt at making a open house app for agents to organize all the visitors that came to an open house.
 
 Mongodb, Ruby on Rails, Bootstrap
+
+Redid this projects in PostgreSQL. PLease refer to openhouseorganizer.herokuapp.com
